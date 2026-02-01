@@ -42,14 +42,16 @@ We then normalize this spread into a **Z-Score** using a 30-day rolling window t
 - **NumPy** - Matrix multiplication and linear algebra for the Kalman Filter
 - **Pandas** - Time-series data manipulation and rolling window calculations
 - **Matplotlib** - Visualization of prices, hedge ratios, and equity curves
+- **Streamlit** - Interactive web dashboard
 - **yfinance** - Real-time market data API
 
 ## 📂 Project Structure
 
 ```
 Alpha-Research-Kalman/
+├── app.py            # Streamlit web dashboard for interactive analysis
 ├── kalman.py         # Custom KalmanRegression class implementation
-├── strategy.py       # Main script: Data fetching, signal generation, and backtesting
+├── strategy.py       # CLI script: Data fetching, signal generation, and backtesting
 ├── requirements.txt  # Project dependencies
 └── README.md         # Project documentation
 ```
@@ -67,18 +69,31 @@ Alpha-Research-Kalman/
    pip install -r requirements.txt
    ```
 
-3. **Run the strategy**
+3. **Run the strategy** (CLI)
    ```bash
    python strategy.py
    ```
 
+4. **Launch the web dashboard** (Interactive)
+   ```bash
+   streamlit run app.py
+   ```
+
 ## 📊 Results
 
-The script generates a comprehensive dashboard showing:
+Both interfaces generate a comprehensive dashboard showing:
 
 - **Price History** - Visual confirmation of correlation
-- **Trading Signals** - The Z-Score oscillator with ±2.0 thresholds
+- **Trading Signals** - The Z-Score oscillator with configurable thresholds
 - **Cumulative PnL** - The equity curve showing the strategy's historical performance
+
+### Web Dashboard Features
+
+The Streamlit app (`app.py`) provides:
+- **Custom ticker selection** - Test any correlated stock pair
+- **Adjustable parameters** - Z-score threshold, rolling window size
+- **Real-time metrics** - Net profit, Sharpe ratio, total trades
+- **Interactive charts** - Zoomable price correlation and performance graphs
 
 ---
 
